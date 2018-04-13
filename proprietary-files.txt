@@ -1,5 +1,3 @@
-# Samsung Package Version J500HXXU1APE5_J500HOXE1APE5_J500HXXU1APC2 (unless otherwise specified and/or tagged)
-
 # ACDBs
 etc/Bluetooth_cal.acdb
 etc/General_cal.acdb
