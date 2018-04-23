@@ -31,41 +31,25 @@
 
 void init_target_properties(void)
 {
-	char *bootloader_str = NULL;
-	char *build_id = NULL;
 	char *device = NULL;
 	char *model = NULL;
-	char *name = NULL;
-	char *operator_alpha = NULL;
-	char *operator_numeric = NULL;
-	char *version_release = NULL;
 
-	int network_type = 1;
-
-	/* get the bootloader string */
 	std::string bootloader = android::base::GetProperty("ro.bootloader", "");
 
 	if (bootloader.find("A5000") == 0) {
 		device = (char *)"a5ltechn";
 		model = (char *)"SM-A5000";
-		name = (char *)"a5ltechn";
-		network_type=LTE_DEVICE;
+		set_lte_properties();
 	}
 	else if (bootloader.find("A5009") == 0) {
 		device = (char *)"a5ltectc";
 		model = (char *)"SM-A5009";
-		name = (char *)"a5ltectc";
-		network_type=LTE_DEVICE;
+		set_lte_properties();
 	}
 	else {
 		return;
 	}
 
-	/* make sure device name is set */
-	if (name == NULL)
-		name = device;
-
 	/* set the properties */
-	set_target_properties(build_id, bootloader_str, name, device, model,
-		       network_type, operator_alpha, operator_numeric, version_release);
+	set_target_properties(device, model);
 }
