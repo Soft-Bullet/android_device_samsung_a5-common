@@ -13,10 +13,27 @@
 #  See the License for the specific language governing permissions and
 #  limitations under the License.
 #
-# Inherit from common
-include device/samsung/msm8916-common/BoardConfigCommon.mk
 
 LOCAL_PATH := device/samsung/a5-common
 
-# Include board config fragments
-include $(LOCAL_PATH)/board/*.mk
+# Bluetooth
+BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(LOCAL_PATH)/bluetooth
+
+# Include
+TARGET_SPECIFIC_HEADER_PATH += $(LOCAL_PATH)/include
+
+# Init
+TARGET_LIBINIT_MSM8916_DEFINES_FILE := $(LOCAL_PATH)/init/init_a5.cpp
+
+# Lights
+TARGET_PROVIDES_LIBLIGHT := false
+
+# RIL
+BOARD_MODEM_TYPE := xmm7260
+BOARD_PROVIDES_LIBRIL := true
+
+# Wifi
+BOARD_HAVE_SAMSUNG_WIFI := true
+
+# Inherit from common
+include device/samsung/msm8916-common/BoardConfigCommon.mk
